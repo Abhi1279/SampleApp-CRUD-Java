@@ -15,40 +15,17 @@ pipeline {
     }
 
     stages {
-        stage('Compile') {
+        stage('Git Checkout') {
             steps {
-                sh 'mvn compile'
+                git 'https://github.com/Abhi1279/SampleApp-CRUD-Java.git'
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         sh 'mvn clean package'
-        //     }
-        // }
-        // stage('Test') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        //     post {
-        //         always {
-        //             junit '**/target/surefire-reports/*.xml'
-        //         }
-        //     }
-        // }
-        // stage('Package') {
-        //     steps {
-        //         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-        //     }
-        // }
-        // Add deploy or other stages as needed
+    }
+    stage('Compile') {
+        steps {
+        sh 'mvn clean compile'
+        }
     }
 
-    post {
-        success {
-            echo 'Build and tests succeeded!'
-        }
-        failure {
-            echo 'Build or tests failed.'
-        }
-    }
+   
 }
