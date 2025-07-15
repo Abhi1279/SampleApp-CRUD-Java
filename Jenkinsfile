@@ -20,12 +20,13 @@ pipeline {
                 git 'https://github.com/Abhi1279/SampleApp-CRUD-Java.git'
             }
         }
-    }
-    stage('Compile') {
+         stage('Compile') {
         steps {
         sh 'mvn clean compile'
         }
     }
+    }
+   
 
    
 }
